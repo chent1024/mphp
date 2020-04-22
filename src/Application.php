@@ -44,6 +44,7 @@ class Application
 
     public function init()
     {
+        $this->loader->register('log', '\mphp\Log');
         $this->loader->register('config', '\mphp\Config');
         $this->loader->register('request', '\mphp\Request');
         $this->loader->register('response', '\mphp\Response');
@@ -178,6 +179,9 @@ class Application
             ini_set('display_errors', 'Off');
         }
 
+        if (!config('app.log.enable')) {
+            $this->log()->init();
+        }
         $dispatched = false;
         $self = $this;
         $request = $this->request();
