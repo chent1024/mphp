@@ -124,6 +124,7 @@ class Application
     public function handleError($errno, $errstr, $errfile, $errline)
     {
         if ($errno & error_reporting()) {
+            $this->log()->err($errstr, [$errno, $errfile, $errline]);
             throw new \ErrorException($errstr, $errno, 0, $errfile, $errline);
         }
     }
