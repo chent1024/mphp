@@ -2,6 +2,7 @@
 namespace mphp;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Handler\FirePHPHandler;
 
 class Log {
     protected $logger;
@@ -40,5 +41,5 @@ class Log {
       }
       return $this->logger->$name(...$arguments);
   }
-  
+
 }
