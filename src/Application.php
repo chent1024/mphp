@@ -140,14 +140,17 @@ class Application
         }
 
         try {
+            $this->log()->err($e->getMessage(), [$e->getCode(), $e->getTraceAsString()]);
             $this->response()
                 ->clear()
                 ->status(500)
                 ->write($msg)
                 ->send();
         } catch (\Throwable $t) { // PHP 7.0+
+            $this->log()->err($msg, [$t->getCode(), $t->getTraceAsString()]);
             exit($msg);
         } catch (\Exception $e) { // PHP < 7
+            $this->log()->err($msg, [$e->getCode(), $e->getTraceAsString()]);
             exit($msg);
         }
     }
@@ -179,9 +182,7 @@ class Application
             ini_set('display_errors', 'Off');
         }
 
-        if (!config('app.log.enable')) {
-            $this->log()->init();
-        }
+        $this->log()->init();
         $dispatched = false;
         $self = $this;
         $request = $this->request();
