@@ -5,6 +5,9 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Handler\FirePHPHandler;
 
 class Log {
+    /**
+     * @var \Monolog\Logger
+     */
     protected $logger;
     /**
     DEBUG = 100;
