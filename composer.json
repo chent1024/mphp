@@ -1,0 +1,28 @@
+{
+  "name": "chent/mphp",
+  "description": "基于flight框架魔改",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "ct",
+      "email": "emailctao@163.com"
+    }
+  ],
+  "autoload": {
+    "files": ["src/functions.php"],
+    "psr-4": {
+      "mphp\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.1.3",
+    "illuminate/database": "^5.8.36",
+    "illuminate/pagination": "^5.8.36",
+    "symfony/var-dumper": "^4.2",
+    "monolog/monolog": "^1.12"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
