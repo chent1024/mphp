@@ -141,17 +141,17 @@ class Application
         }
 
         try {
-            $this->log()->err($e->getMessage(), [$e->getCode(), $e->getTraceAsString()]);
+            $this->log()->err($e->getMessage()."\r\n".$e->getTraceAsString());
             $this->response()
                 ->clear()
                 ->status(500)
                 ->write($msg)
                 ->send();
         } catch (\Throwable $t) { // PHP 7.0+
-            $this->log()->err($msg, [$t->getCode(), $t->getTraceAsString()]);
+            $this->log()->err($msg."\r\n".$t->getTraceAsString());
             exit($msg);
         } catch (\Exception $e) { // PHP < 7
-            $this->log()->err($msg, [$e->getCode(), $e->getTraceAsString()]);
+            $this->log()->err($msg."\r\n".$e->getTraceAsString());
             exit($msg);
         }
     }
